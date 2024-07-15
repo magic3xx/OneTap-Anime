@@ -1,0 +1,52 @@
+.episodes-list {
+  margin: 20px;
+  flex: 1;
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.episodes-list h2 {
+  background-color: #ff7c00;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.episodes-list ul {
+  margin-top: 10px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.episodes-list ul li {
+  border-bottom: 1px dashed #df0b0b;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.episodes-list ul li:hover {
+  background-color: #ff7c00;
+}
+
+.episodes-list ul li .episode-list-loading {
+  color: white;
+  text-align: center;
+  background-color: #df0b0b;
+}
+
+/* ////......Media query......//// */
+
+@media (max-width: 768px) {
+  .episodes-list {
+    margin: 10px;
+    margin-bottom: 60px;
+  }
+
+  .episodes-list ul li {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

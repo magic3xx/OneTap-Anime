@@ -1,0 +1,72 @@
+.watch-online-dub-container {
+  padding: 150px 0 0 0;
+}
+
+.anime-title {
+  color: white;
+  text-align: center;
+  background-color: #ff7c00;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2em;
+}
+
+.watch-online-container {
+  display: flex;
+  padding: 100px 20px 0 20px;
+}
+
+/* ////......Media query......//// */
+
+@media (max-width: 500px) {
+  .anime-title {
+    color: white;
+    text-align: center;
+    background-color: #ff7c00;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2em;
+  }
+
+  .watch-online-container {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .watch-online-dub-container {
+    text-align: center;
+  }
+
+  .watch-online-container {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .watch-online-dub-container {
+    text-align: center;
+  }
+
+  .watch-online-container {
+    flex-direction: column;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .watch-online-dub-container {
+    text-align: center;
+  }
+
+  .watch-online-container {
+    flex-direction: column;
+  }
+}
+
+.wos-spinner {
+  margin-bottom: 150px;
+}
