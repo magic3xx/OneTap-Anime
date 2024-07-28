@@ -4,6 +4,28 @@
   text-align: center;
   color: white;
   margin-bottom: 50px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.episodes-list::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+.episodes-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+  background-color: #CCCCCC;
+}
+
+.episodes-list::-webkit-scrollbar-thumb {
+  background-color: #FFF;
+  background-image: -webkit-linear-gradient(90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 25%,
+      transparent 100%,
+      rgba(0, 0, 0, 1) 75%,
+      transparent);
 }
 
 .episodes-list h2 {
@@ -16,7 +38,6 @@
 
 .episodes-list ul {
   margin-top: 10px;
-  max-height: 70vh;
   overflow-y: auto;
 }
 
@@ -37,7 +58,7 @@
   background-color: #df0b0b;
 }
 
-/* ////......Media query......//// */
+/* Media query */
 
 @media (max-width: 768px) {
   .episodes-list {
