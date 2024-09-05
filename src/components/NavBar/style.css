@@ -48,7 +48,7 @@ header .anime {
   color: white;
   position: relative;
   top: 7px;
-  left: 53%;
+  left: 55%;
   transform: translateX(-50%);
 }
 
@@ -129,7 +129,7 @@ header .menu {
     right: -100%;
     background: rgba(0, 0, 0, 0.5);
     height: calc(100vh - 70px);
-    width: 50%;
+    width: 60%;
     flex-direction: column;
     align-items: center;
     transition: right 0.5s linear;
@@ -141,7 +141,14 @@ header .menu {
     text-align: center;
   }
 
-  #chk1:checked ~ ul {
+  #chk1:checked~ul {
     right: 0;
+  }
+
+  header .name-container {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

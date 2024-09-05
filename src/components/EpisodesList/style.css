@@ -1,10 +1,14 @@
-.episodes-list {
+.episodes-list-container {
   margin: 70px;
   flex: 1;
   text-align: center;
   color: white;
   margin-bottom: 50px;
   max-height: 70vh;
+}
+
+.episodes-list {
+  max-height: calc(70vh - 50px);
   overflow-y: auto;
 }
 
@@ -28,20 +32,19 @@
       transparent);
 }
 
-.episodes-list h2 {
+.episodes-list-container h2 {
   background-color: #ff7c00;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky; 
-  top: 0; 
-  z-index: 1; 
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .episodes-list ul {
   margin-top: 10px;
-  overflow-y: auto;
 }
 
 .episodes-list ul li {
@@ -64,7 +67,7 @@
 /* Media query */
 
 @media (max-width: 768px) {
-  .episodes-list {
+  .episodes-list-container {
     margin: 10px;
     margin-bottom: 60px;
   }
