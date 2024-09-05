@@ -63,6 +63,7 @@ import Vampire from "./components/Genres/Vampire/Vampire";
 import Supernatural from "./components/Genres/Supernatural/SuperNatural";
 import AnimeSearch from "./components/AnimeSearch/AnimeSearch";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
 
 
 
@@ -72,6 +73,7 @@ function App() {
       <div>
         <ScrollToTop />
         <NavBar />
+        <BackToTopButton />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/data/:id" element={<Data />} />
