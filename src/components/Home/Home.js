@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "../Carousel/Carousel";
 import Top10Anime from "../Categories/Top10Anime/Top10Anime";
+import Top10AnimeWeek from "../Categories/Top10AnimeWeek/Top10AnimeWeek";
+import Top10AnimeMonth from "../Categories/Top10AnimeMonth/Top10AnimeMonth";
 import "./style.css";
 import BackgroundPoster from "../BackgroundPoster/BackgroundPoster";
 import Genres from "../Genres/Genres/Genres";
@@ -12,6 +14,8 @@ const Home = () => {
   const [topAiringAnimes, setTopAiringAnimes] = useState([]);
   const [latestEpisodeAnimes, setLatestEpisodeAnimes] = useState([]);
   const [top10Animes, setTop10Animes] = useState([]);
+  const [top10AnimesWeek, setTop10AnimesWeek] = useState([]);
+  const [top10AnimesMonth, setTop10AnimesMonth] = useState([]);
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
@@ -30,6 +34,20 @@ const Home = () => {
         } else {
           console.error("Invalid data structure:", data);
           setTop10Animes([]);
+        }
+
+        if (data.top10Animes && data.top10Animes.week) {
+          setTop10AnimesWeek(data.top10Animes.week);
+        } else {
+          console.error("Invalid data structure:", data);
+          setTop10AnimesWeek([]);
+        }
+
+        if (data.top10Animes && data.top10Animes.month) {
+          setTop10AnimesMonth(data.top10Animes.month);
+        } else {
+          console.error("Invalid data structure:", data);
+          setTop10AnimesMonth([]);
         }
 
         // Assuming genres data comes from the API, otherwise use a static list
@@ -64,10 +82,14 @@ const Home = () => {
           <Carousel animeData={topAiringAnimes} />
         </div>
 
+        <Top10AnimeWeek top10AnimesWeek={top10AnimesWeek} />
+
         <div className="topupcominganime-container">
           <h1>Top Upcoming Animes</h1>
           <Carousel animeData={topUpcomingAnimes} />
         </div>
+
+        <Top10AnimeMonth top10AnimesMonth={top10AnimesMonth} />
 
         <div className="latestepisode-container">
           <h1>Latest Episodes</h1>
