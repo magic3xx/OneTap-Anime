@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import axios from "axios";
 import Hls from "hls.js";
 import "./style.css";
+// import LoadingBar from "react-top-loading-bar"; 
 
 const DubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSelectedEpisodeIndex }) => {
   const [selectedEpisode, setSelectedEpisode] = useState(null);
@@ -12,11 +13,13 @@ const DubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSe
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const videoRef = useRef(null);
+  // const loadingBarRef = useRef(null); 
 
   const fetchEpisodeData = useCallback(
     async (index) => {
       try {
         setIsLoadingEpisode(true);
+        // loadingBarRef.current?.continuousStart();
         const response = await axios.get(`https://aniwatch-api-puce-eight.vercel.app/anime/episode-srcs?id=${animeDetails.episodes[index].episodeId}&server=vidstreaming&category=dub`);
         const episodeData = response.data;
 
@@ -46,11 +49,13 @@ const DubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSe
         }
 
         setIsLoadingEpisode(false);
+        // loadingBarRef.current?.complete(); 
       } catch (error) {
         console.error("Error fetching episode data:", error);
         setPopupMessage("This episode is currently unavailable in the dubbed version. However, you can watch it in the subbed version.");
         setShowPopup(true);
         setIsLoadingEpisode(false);
+        // loadingBarRef.current?.complete(); 
       }
     },
     [animeDetails, setSelectedEpisodeIndex]
@@ -100,6 +105,7 @@ const DubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSe
 
   return (
     <div className="playback-section">
+      {/* <LoadingBar height={3} color="blue" ref={loadingBarRef} />  */}
       {showPopup && (
         <div className="popup">
           <div className="popup-content">

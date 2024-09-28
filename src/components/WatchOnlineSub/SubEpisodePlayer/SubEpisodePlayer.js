@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import axios from "axios";
 import Hls from "hls.js";
 import "./style.css";
+// import LoadingBar from "react-top-loading-bar"; 
 
 const SubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSelectedEpisodeIndex }) => {
   const [selectedEpisode, setSelectedEpisode] = useState(null);
@@ -10,10 +11,12 @@ const SubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSe
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [playingEpisodeName, setPlayingEpisodeName] = useState("");
   const videoRef = useRef(null);
+  // const loadingBarRef = useRef(null); 
 
   const fetchEpisodeData = useCallback(
     async (index) => {
       try {
+        // loadingBarRef.current?.continuousStart(); 
         setIsLoadingEpisode(true);
         const response = await axios.get(`https://aniwatch-api-puce-eight.vercel.app/anime/episode-srcs?id=${animeDetails.episodes[index].episodeId}&server=vidstreaming&category=sub`);
         const episodeData = response.data;
@@ -38,9 +41,11 @@ const SubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSe
           setNextEpisode(null);
         }
         setIsLoadingEpisode(false);
+        // loadingBarRef.current?.complete(); 
       } catch (error) {
         console.error("Error fetching episode data:", error);
         setIsLoadingEpisode(false);
+        // loadingBarRef.current?.complete(); 
       }
     },
     [animeDetails, setSelectedEpisodeIndex]
@@ -114,6 +119,7 @@ const SubEpisodePlayer = ({ episodeId, animeDetails, selectedEpisodeIndex, setSe
 
   return (
     <div className="playback-section">
+      {/* <LoadingBar height={3} color="blue" ref={loadingBarRef} />  */}
       {thumbnailUrl && <img src={thumbnailUrl} alt="Thumbnail" />}
       <h4>{selectedEpisode?.episodeId}</h4>
       <h2>{playingEpisodeName}</h2>

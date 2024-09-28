@@ -27,7 +27,7 @@ const Footer = () => (
           </ul>
 
           <ul>
-            <h3>categories</h3>
+            <h3>categories 1</h3>
             <li>
               <Link to="/most-favorite">Most Favorite</Link>
             </li>
@@ -35,16 +35,17 @@ const Footer = () => (
               <Link to="/most-popular">Most Popular</Link>
             </li>
             <li>
-              <Link to="/recently-updated">Recently Updated</Link>
+              <Link to="/recently-added">Recently Added</Link>
             </li>
             <li>
-              <Link to="/recently-added">Recently Added</Link>
+              <Link to="/recently-updated">Recently Updated</Link>
             </li>
           </ul>
 
           <ul>
-            <li className="list-mt">
-              <Link to="/tv">TV</Link>
+            <h3>categories 2</h3>
+            <li>
+              <Link to="/completed">Completed</Link>
             </li>
 
             <li>
@@ -56,14 +57,14 @@ const Footer = () => (
             </li>
 
             <li>
-              <Link to="/completed">Completed</Link>
+              <Link to="/tv">TV</Link>
             </li>
           </ul>
 
           <ul>
             <h3>Who We Are</h3>
             <li>
-              <Link to="/about">About Us</Link>
+              <Link to="">About Us</Link>
             </li>
             <li>
               <Link to="/contact">Contact Us</Link>
@@ -80,20 +81,12 @@ const Footer = () => (
         </div>
       </div>
       <div className="social">
-        <i className="fab fa-facebook"></i>
-        <i className="fab fa-instagram"></i>
+        <i className="fab fa-telegram"></i>
         <i className="fab fa-youtube"></i>
+        <i className="fab fa-instagram"></i>
       </div>
       <div className="info">
-        <div className="legal">
-          <a href="/" className="item">
-            Terms & Conditions
-          </a>
-          <a href="/" className="item item-pp">
-            Privacy Policy
-          </a>
-        </div>
-        <div className="copyright">2024 Copyright &copy; OneTap</div>
+        <div className="copyright"> &copy; 2024 OneTap</div>
       </div>
     </footer>
   </>

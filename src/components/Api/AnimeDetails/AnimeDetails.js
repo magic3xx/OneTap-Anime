@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Img from "../../LazyLoading/Img/Img";
 import Spinner from "../../Spinner/Spinner";
+import LoadingBar from "react-top-loading-bar";
 import "./style.css";
 import Carousel from "../../Carousel/Carousel";
 
@@ -11,11 +12,13 @@ const AnimeDetails = ({ id }) => {
   const [loading, setLoading] = useState(true);
   const [relatedAnimes, setRelatedAnimes] = useState([]);
   const [recommendedAnimes, setRecommendedAnimes] = useState([]);
-
+  const loadingBarRef = useRef(null); 
   useEffect(() => {
     const fetchAnimeDetails = async () => {
       try {
         setLoading(true);
+        loadingBarRef.current?.continuousStart(); 
+
         const response = await axios.get(`https://aniwatch-api-puce-eight.vercel.app/anime/info?id=${id}`);
         const data = response.data;
 
@@ -26,10 +29,11 @@ const AnimeDetails = ({ id }) => {
         } else {
           console.error("Invalid response data structure:", data);
         }
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching anime details:", error);
-        setLoading(false);
+      } finally {
+        setLoading(false); 
+        loadingBarRef.current?.complete(); 
       }
     };
 
@@ -37,11 +41,16 @@ const AnimeDetails = ({ id }) => {
   }, [id]);
 
   if (loading) {
-    return <Spinner loading={loading} />;
+    return (
+      <>
+        <LoadingBar height={3} color="blue" ref={loadingBarRef} /> 
+        <Spinner loading={loading} />
+      </>
+    );
   }
 
   if (!animeDetails) {
-    return <p style={{ color: "white", padding: "130px 20px 0 20px", textAlign: "center", fontSize: "18px", marginBottom: "" }}>Anime details are not found yet, Please refresh the page.</p>;
+    return <p style={{ color: "white", padding: "130px 20px 0 20px", textAlign: "center", fontSize: "18px" }}>Anime details are not found yet, Please refresh the page.</p>;
   }
 
   const handleGenreClick = (genre) => {
@@ -50,6 +59,7 @@ const AnimeDetails = ({ id }) => {
 
   return (
     <>
+      <LoadingBar height={3} color="blue" ref={loadingBarRef} />
       <div className="info-container">
         <h2>{animeDetails.info.name}</h2>
         <Img src={animeDetails.info.poster} alt={animeDetails.info.name} />
@@ -151,14 +161,12 @@ const AnimeDetails = ({ id }) => {
           </div>
         )}
       </div>
-
       <div>
         <div>
           <h1>Related Animes</h1>
           <Carousel animeData={relatedAnimes} />
         </div>
       </div>
-
       <div>
         <div className="recommended-container">
           <h1>Recommended Animes</h1>

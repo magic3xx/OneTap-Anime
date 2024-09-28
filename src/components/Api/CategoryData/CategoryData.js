@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Img from "../../LazyLoading/Img/Img";
 import Spinner from "../../Spinner/Spinner";
+import LoadingBar from "react-top-loading-bar"; 
 import "./style.css";
 
 const CategoryData = ({ type }) => {
@@ -10,23 +11,27 @@ const CategoryData = ({ type }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(true);
+  const loadingBarRef = useRef(null); 
 
   useEffect(() => {
     const fetchAnime = async () => {
       try {
         setLoading(true);
+        loadingBarRef.current?.continuousStart();
         const response = await axios.get(`https://aniwatch-api-puce-eight.vercel.app/anime/${type}?page=${currentPage}`);
         const data = response.data;
+
         if (data && data.animes) {
           setAnimeList((prevAnime) => [...prevAnime, ...data.animes]);
           setTotalPages(data.totalPages);
         } else {
           console.error("Invalid response structure:", data);
         }
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching anime:", error);
-        setLoading(false);
+      } finally {
+        setLoading(false); 
+        loadingBarRef.current?.complete();
       }
     };
 
@@ -39,6 +44,7 @@ const CategoryData = ({ type }) => {
 
   return (
     <div className="anime-category-container">
+      <LoadingBar height={3} color="blue" ref={loadingBarRef} /> 
       {loading && (
         <div className="spinner">
           <Spinner loading={loading} />

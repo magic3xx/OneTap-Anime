@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import LoadingBar from "react-top-loading-bar";
 import Carousel from "../Carousel/Carousel";
 import Top10Anime from "../Categories/Top10Anime/Top10Anime";
 import Top10AnimeWeek from "../Categories/Top10AnimeWeek/Top10AnimeWeek";
@@ -18,10 +19,14 @@ const Home = () => {
   const [top10AnimesMonth, setTop10AnimesMonth] = useState([]);
   const [genres, setGenres] = useState([]);
 
+  const loadingBarRef = useRef(null);
+
   useEffect(() => {
     const fetchData = async () => {
+      loadingBarRef.current.staticStart();
       try {
         const response = await fetch("https://aniwatch-api-puce-eight.vercel.app/anime/home");
+        loadingBarRef.current.continuousStart();
         const data = await response.json();
 
         setSpotlightAnimes(data.spotlightAnimes || []);
@@ -52,8 +57,10 @@ const Home = () => {
 
         // Assuming genres data comes from the API, otherwise use a static list
         setGenres(data.genres || ["Action", "Adventure", "Cars", "Comedy", "Dementia", "Demons", "Drama", "Ecchi", "Fantasy", "Game", "Harem", "Historical", "Horror", "Isekai", "Josei", "Kids", "Magic", "Martial Arts", "Mecha", "Military", "Music", "Mystery", "Parody", "Police", "Psychological", "Romance", "Samurai", "School", "Sci-Fi", "Seinen", "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Slice of Life", "Space", "Sports", "Super Power", "Supernatural", "Thriller", "Vampire"]);
+        loadingBarRef.current.complete();
       } catch (error) {
         console.error("Error fetching data:", error);
+        loadingBarRef.current.complete();
       }
     };
 
@@ -62,6 +69,7 @@ const Home = () => {
 
   return (
     <>
+      <LoadingBar height={3} color="blue" ref={loadingBarRef} />
       <BackgroundPoster spotlightAnimes={spotlightAnimes}>
         <div className="trendinganime-container">
           <h1>Trending Animes</h1>

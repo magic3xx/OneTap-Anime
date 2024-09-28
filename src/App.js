@@ -64,6 +64,7 @@ import Supernatural from "./components/Genres/Supernatural/SuperNatural";
 import AnimeSearch from "./components/AnimeSearch/AnimeSearch";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
+import Contact from "./components/Contact/Contact";
 
 
 
@@ -91,6 +92,7 @@ function App() {
           <Route path="/most-favorite" element={<MostFavorite />} />
           <Route path="/completed" element={<Completed />} />
           <Route path="/tv" element={<Tv />} />
+          <Route path="/contact" element={<Contact />} />
 
           <Route path="/genre/Action" element={<Action />} />
           <Route path="/genre/adventure" element={<Adventure />} />

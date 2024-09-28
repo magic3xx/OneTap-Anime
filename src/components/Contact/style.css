@@ -1,0 +1,124 @@
+/* loading bar */
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.loading-bar .progress {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  animation: loading 2s linear;
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* end loading bar */
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 0;
+}
+
+.contact-us h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.contact-us p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.social-card {
+  background-color: #cebebe;
+  border-radius: 15px;
+  width: 150px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-card .icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.social-card span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-card:hover .fa-telegram-plane {
+  color: #0088cc;
+}
+
+.social-card:hover .telegram-icon {
+  color: #0088cc;
+}
+
+.social-card:hover .fa-youtube {
+  color: #ff0000;
+}
+
+.social-card:hover .youtube-icon {
+  color: #ff0000;
+}
+
+.social-card:hover .instagram-icon {
+  color: transparent;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  -webkit-background-clip: text;
+}
+
+.social-card:hover .fa-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.telegram .icon {
+  color: #0088cc;
+}
+
+.youtube .icon {
+  color: #ff0000;
+}
+
+.instagram .icon {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
