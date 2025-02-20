@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./style.css";
 
-
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -27,10 +26,18 @@ const BackToTopButton = () => {
 
   return (
     <a
+      href="#"
       id="button"
       className={isVisible ? 'show' : ''}
-      onClick={scrollToTop}
-    ></a>
+      onClick={(e) => {
+        e.preventDefault(); // Prevents jumping to the top instantly
+        scrollToTop();
+      }}
+      role="button"
+      aria-label="Back to Top"
+    >
+      ⬆️ {/* You can replace this with an icon */}
+    </a>
   );
 };
 
