@@ -8,7 +8,7 @@ const Footer = () => (
       <div className="top">
         <div className="pages">
           <ul>
-            <h3>OneTap</h3>
+            <h3>Hobaz</h3>
             <li>
               <Link to="/">Home</Link>
             </li>
