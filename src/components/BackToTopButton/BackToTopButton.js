@@ -5,14 +5,11 @@ const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+    setIsVisible(window.pageYOffset > 300);
   };
 
-  const scrollToTop = () => {
+  const scrollToTop = (e) => {
+    e.preventDefault(); // Prevents default anchor behavior
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -29,14 +26,11 @@ const BackToTopButton = () => {
       href="#"
       id="button"
       className={isVisible ? 'show' : ''}
-      onClick={(e) => {
-        e.preventDefault(); // Prevents jumping to the top instantly
-        scrollToTop();
-      }}
+      onClick={scrollToTop}
       role="button"
       aria-label="Back to Top"
     >
-      ⬆️ {/* You can replace this with an icon */}
+      ⬆️ {/* Replace with an icon if needed */}
     </a>
   );
 };
