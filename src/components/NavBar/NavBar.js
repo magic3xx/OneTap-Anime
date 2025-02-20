@@ -19,10 +19,10 @@ const NavBar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/subbed-anime">Subbed Anime</Link>
+            <Link to="/subbed-anime">Sub Anime</Link>
           </li>
           <li>
-            <Link to="/dubbed-anime">Dubbed Anime</Link>
+            <Link to="/dubbed-anime">Dub Anime</Link>
           </li>
           <li>
             <Link to="/movies">Movies</Link>
