@@ -10,7 +10,7 @@ const NavBar = () => {
         <div className="logo">
           <div className="name-container">
             <div className="anime">Anime</div>
-            <div className="name">OneTap</div>
+            <div className="name">Hobaz</div>
           </div>
         </div>
         <div className="search-box"></div>
