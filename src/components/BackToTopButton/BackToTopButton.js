@@ -5,19 +5,11 @@ const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+    setIsVisible(window.pageYOffset > 300);
   };
 
-  const scrollToTop = (event) => {
-    event.preventDefault(); // Prevent default anchor behavior
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -26,14 +18,14 @@ const BackToTopButton = () => {
   }, []);
 
   return (
-    <a
-      href="#" // Added valid href attribute
+    <button
       id="button"
       className={isVisible ? 'show' : ''}
       onClick={scrollToTop}
+      aria-label="Back to Top"
     >
-      ↑ Back to Top
-    </a>
+      ↑
+    </button>
   );
 };
 
